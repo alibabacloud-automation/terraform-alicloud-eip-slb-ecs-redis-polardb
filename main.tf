@@ -1,7 +1,7 @@
 resource "alicloud_security_group" "default" {
-  name        = var.name
-  vpc_id      = var.vpc_id
-  description = var.description
+  security_group_name = var.name
+  vpc_id              = var.vpc_id
+  description         = var.description
 }
 
 resource "alicloud_eip" "default" {
@@ -22,7 +22,7 @@ resource "alicloud_slb_load_balancer" "default" {
 resource "alicloud_instance" "default" {
   instance_name              = var.name
   availability_zone          = var.zone_id
-  security_groups            = alicloud_security_group.default.*.id
+  security_groups            = alicloud_security_group.default[*].id
   vswitch_id                 = var.vswitch_id
   instance_type              = var.instance_type
   system_disk_category       = var.system_disk_category
