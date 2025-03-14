@@ -1,6 +1,6 @@
 #alicloud_security_group
 variable "name" {
-  description = ""
+  description = "The name of security group."
   type        = string
   default     = "tf-testacc-name"
 }

@@ -1,6 +1,6 @@
 #alicloud_security_group
 variable "name" {
-  description = ""
+  description = "The common name"
   type        = string
   default     = ""
 }
@@ -197,74 +197,3 @@ variable "polar_db_name" {
   default     = ""
 }
 
-variable "available_disk_category" {
-  description = "The specification of available disk category."
-  type        = string
-  default     = "cloud_efficiency"
-}
-
-variable "available_resource_creation" {
-  description = "The specification of available resource creation."
-  type        = string
-  default     = "PolarDB"
-}
-
-variable "vpc_cidr_block" {
-  description = "The specification of the vpc cidr block."
-  type        = string
-  default     = ""
-}
-
-variable "vswitch_cidr_block" {
-  description = "The specification of the vswitch cidr block."
-  type        = string
-  default     = ""
-}
-
-variable "engine" {
-  description = "The specification of the engine."
-  type        = string
-  default     = "MySQL"
-}
-
-variable "engine_version" {
-  description = "The specification of the engine version."
-  type        = string
-  default     = "5.6"
-}
-
-variable "rds_instance_type" {
-  description = "The specification of the rds instance type."
-  type        = string
-  default     = ""
-}
-
-variable "redis_appendonly" {
-  description = "The specification of the redis instance class."
-  type        = string
-  default     = ""
-}
-
-variable "redis_lazyfree-lazy-eviction" {
-  description = "The specification of the redis instance class."
-  type        = string
-  default     = ""
-}
-
-variable "instance_storage" {
-  description = "The specification of the instance storage."
-  type        = string
-  default     = "30"
-}
-
-variable "instance_charge_type" {
-  description = "The specification of the instance charge type."
-  type        = string
-  default     = "Postpaid"
-}
-
-variable "monitoring_period" {
-  description = "The specification of the monitoring period."
-  type        = string
-  default     = "60"
-}
