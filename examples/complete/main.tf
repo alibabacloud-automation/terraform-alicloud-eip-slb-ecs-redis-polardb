@@ -1,28 +1,37 @@
+provider "alicloud" {
+  region = "ap-southeast-5"
+}
+
 data "alicloud_polardb_zones" "default" {
 }
 
+locals {
+  zone_id = data.alicloud_polardb_zones.default.zones[0].id
+}
+
 data "alicloud_images" "default" {
-  name_regex = "^centos_6"
+  most_recent   = true
+  instance_type = data.alicloud_instance_types.default.instance_types[0].id
 }
 
 data "alicloud_instance_types" "default" {
-  availability_zone    = data.alicloud_polardb_zones.default.zones[0].id
+  availability_zone    = local.zone_id
   cpu_core_count       = 2
   memory_size          = 8
-  instance_type_family = "ecs.g6"
+  instance_type_family = "ecs.g9i"
 }
 
 data "alicloud_kvstore_instance_classes" "default" {
   engine         = "Redis"
   engine_version = var.redis_engine_version
-  zone_id        = data.alicloud_polardb_zones.default.zones[0].id
+  zone_id        = local.zone_id
 }
 
 data "alicloud_polardb_node_classes" "default" {
   pay_type   = var.polar_db_pay_type
   db_type    = "MySQL"
   db_version = "5.6"
-  zone_id    = data.alicloud_polardb_zones.default.zones[0].id
+  zone_id    = local.zone_id
 }
 
 module "vpc" {
@@ -56,14 +65,14 @@ module "example" {
   #alicloud_instance
   zone_id                    = data.alicloud_polardb_zones.default.zones[0].id
   instance_type              = data.alicloud_instance_types.default.instance_types[0].id
-  system_disk_category       = "cloud_efficiency"
+  system_disk_category       = "cloud_essd"
   system_disk_name           = var.system_disk_name
   system_disk_description    = var.system_disk_description
   image_id                   = data.alicloud_images.default.images[0].id
   internet_max_bandwidth_out = var.internet_max_bandwidth_out
   ecs_size                   = 1200
   data_disks_name            = "data_disks_name"
-  category                   = "cloud_efficiency"
+  category                   = "cloud_essd"
   data_disks_description     = "tf-vpc-ecs-description"
   encrypted                  = true
 
