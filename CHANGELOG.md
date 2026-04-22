@@ -1,3 +1,14 @@
+## [3.0.0](https://github.com/alibabacloud-automation/terraform-alicloud-eip-slb-ecs-redis-polardb/compare/v2.0.2...v3.0.0) (2026-04-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* add provider version constraint for aliyun/alicloud
+
+### Features
+
+* add provider version constraint for aliyun/alicloud ([c2fb3a0](https://github.com/alibabacloud-automation/terraform-alicloud-eip-slb-ecs-redis-polardb/commit/c2fb3a0731775b86f3af9cc494dadd3a5fad3cb8))
+
 ## [2.0.2](https://github.com/alibabacloud-automation/terraform-alicloud-eip-slb-ecs-redis-polardb/compare/v2.0.1...v2.0.2) (2025-11-27)
 
 ## [2.0.1](https://github.com/alibabacloud-automation/terraform-alicloud-eip-slb-ecs-redis-polardb/compare/v2.0.0...v2.0.1) (2025-10-16)
